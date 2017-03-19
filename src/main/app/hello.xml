@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:tls="http://www.mulesoft.org/schema/mule/tls"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:spring="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/tls http://www.mulesoft.org/schema/mule/tls/current/mule-tls.xsd">
+
+	<flow name="HelloHTTP_Flow">
+		<http:listener config-ref="HTTP_Listener_80" path="/hello"
+			doc:name="HTTP" />
+		<set-payload value="#['Hello World!']" doc:name="Set Payload" />
+	</flow>
+
+	<flow name="HelloHTTPS_Flow">
+		<http:listener config-ref="HTTPS_Listener_443" path="/hello"
+			doc:name="HTTPS" />
+		<set-payload value="#['Hello World!']" doc:name="Set Payload" />
+	</flow>
+
+</mule>
